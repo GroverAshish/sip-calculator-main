@@ -1,7 +1,7 @@
 const sip_ctr = async (data) => {
   // Calculation of Total Return
   let months = data.period * 12
-  let rate = data.rate / 12
+  let rate = (data.rate - data.inflationRate)/12
   let monInvest = data.monInvest
   let returnSip = 0
   let result = {}
@@ -18,9 +18,11 @@ const sip_ctr = async (data) => {
 
   result.period = data.period
   result.rate = data.rate
+  result.inflationRate = data.inflationRate
   result.moneyInvested = months*monInvest
   result.return = returnSip
   result.graph = graph
+  
 
   return result  
 
